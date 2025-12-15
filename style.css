@@ -1,0 +1,385 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY */
+body {
+  background-color: #0b0b0b;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  color: #fff;
+}
+
+/* HERO */
+.hero_area {
+  height: 70vh;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+    url("images/car-bg.jpg") center/cover no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* NAV */
+.navbar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 25px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #f5c16c;
+}
+
+/* HERO TEXT */
+.hero_text {
+  text-align: center;
+}
+
+.hero_text h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.hero_text p {
+  font-size: 20px;
+  color: #ccc;
+}
+
+/* ABOUT */
+.about_section {
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading_container {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.heading_container h2 {
+  font-size: 40px;
+}
+
+.heading_container span {
+  color: #f5c16c;
+}
+
+.heading_container p {
+  margin-top: 10px;
+  color: #aaa;
+}
+
+/* CONTENT */
+.about_content {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* IMAGE */
+.about_img img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+}
+
+/* BOX */
+.detail-box {
+  background: #141414;
+  padding: 35px;
+  border-radius: 20px;
+  max-width: 500px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+  transition: transform 0.3s;
+  text-align: center;
+}
+
+.detail-box:hover {
+  transform: translateY(-10px);
+}
+
+.detail-box h3 {
+  color: #f5c16c;
+  margin-bottom: 20px;
+}
+
+.detail-box p {
+  line-height: 1.7;
+  color: #ddd;
+}
+
+/* BUTTON */
+.detail-box a {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 35px;
+  background: #f5c16c;
+  color: #000;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.detail-box a:hover {
+  background: #fff;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero_text h1 {
+    font-size: 32px;
+  }
+
+  .about_content {
+    flex-direction: column;
+  }
+}
+
+/* SERVICES */
+.services_section {
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.services_content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  width: 80%;
+  max-width: 1000px;
+}
+
+.service_card {
+  background: #141414;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service_card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+}
+
+.service_card h3 {
+  color: #f5c16c;
+  margin-bottom: 15px;
+}
+
+.service_card p {
+  color: #ccc;
+  line-height: 1.6;
+}
+
+/* CONTACT */
+.contact_section {
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact_box {
+  background: #141414;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+}
+
+.contact_box p {
+  margin-bottom: 15px;
+  color: #ddd;
+  font-size: 18px;
+}
+
+.contact_box a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 30px;
+  background: #f5c16c;
+  color: #000;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.contact_box a:hover {
+  background: #fff;
+}
+/* SCROLL ANIMATION */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* MAP */
+.map_section {
+  width: 100%;
+  padding: 80px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.map_section iframe {
+  width: 80%;
+  max-width: 1000px;
+  height: 400px;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+}
+
+.socials a {
+  margin: 0 10px;
+  color: #f5c16c;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.socials a:hover {
+  color: #fff;
+}
+/* FORM */
+.contact_form {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact_form input {
+  padding: 14px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.contact_form button {
+  padding: 14px;
+  border-radius: 30px;
+  border: none;
+  background: #f5c16c;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact_form button:hover {
+  background: #fff;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(80px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.service_card:hover,
+.detail-box:hover {
+  transform: translateY(-12px) scale(1.02);
+}
+.contact_container {
+  display: flex;
+  gap: 20px; /* სივრცე ბლოკებს შორის */
+  justify-content: center; /* ცენტრირება ჰორიზონტალურად */
+  flex-wrap: wrap; /* მცირე ეკრანზე გადატანა მეორე ხაზზე */
+  margin-top: 50px;
+}
+
+.contact_box {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 250px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+ body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #0b0b0b;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+
+  .services_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .service_box {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  }
+
+  .service_box h2 {
+    text-align: center;
+    color: #ff9900;
+    margin-bottom: 15px;
+  }
+
+  .service_box ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .service_box ul li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 25px;
+  }
+
+  .service_box ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #00acee;
+  }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(80px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
