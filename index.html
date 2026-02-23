@@ -372,7 +372,25 @@
   <a href="tel:+995558392580" class="float call">📞</a>
   <a href="https://www.facebook.com/profile.php?id=100025626823315" target="_blank" class="float fb">💬</a>
 </div>
+<section class="call_service_section reveal">
+  <h2>🚗 მექანიკოსის გამოძახება</h2>
 
+  <div class="call_form">
+    <input id="callName" placeholder="სახელი">
+    <input id="callPhone" placeholder="ტელეფონი">
+    <input id="callCar" placeholder="Mercedes მოდელი (C,E,S,GLC...)">
+
+    <select id="callProblem">
+      <option>დიაგნოსტიკა</option>
+      <option>აირბაგი / SRS შეცდომა</option>
+      <option>რადარი / დისტრონიკი</option>
+      <option>CarPlay / AMG Menu</option>
+      <option>სხვა პრობლემა</option>
+    </select>
+    
+    <button onclick="sendCallService()">📍 გამოძახება ლოკაციით</button>
+  </div>
+</section>
   </div>
 </section>
 </body>
