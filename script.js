@@ -273,3 +273,45 @@ function login() {
   window.location.href = "dashboard.html";
 }
 
+function sendCallService() {
+  const name = document.getElementById("callName").value;
+  const phone = document.getElementById("callPhone").value;
+  const car = document.getElementById("callCar").value;
+  const problem = document.getElementById("callProblem").value;
+
+  if (!name || !phone || !car) {
+    alert("შეავსე ყველა ველი!");
+    return;
+  }
+
+  // GPS ლოკაცია
+  if (!navigator.geolocation) {
+    alert("ლოკაცია არ არის მხარდაჭერილი ამ ბრაუზერში");
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(position => {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+    const mapLink = `https://maps.google.com/?q=${lat},${lon}`;
+
+    const msg = `
+🚨 Crash Event გამოძახება
+👤 სახელი: ${name}
+📞 ტელ: ${phone}
+🚗 მანქანა: ${car}
+⚠️ პრობლემა: ${problem}
+
+📍 ლოკაცია:
+${mapLink}
+`;
+
+    const encoded = encodeURIComponent(msg);
+
+    // შენი Facebook Page ID
+    window.open("https://m.me/100025626823315?text=" + encoded);
+  }, () => {
+    alert("ლოკაციის მიღება ვერ მოხერხდა. ჩართე GPS.");
+  });
+}
+
