@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="ka">
 <head>
+  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crash Event</title>
+  <link rel="icon" href="556563075_1723414845189393_8436068140080508125_n.jpg" type="image/png">
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <meta name="description" content="Crash Event • პროფესიონალური ავტომობილის დიაგნოსტიკა, AMG Menu, CarPlay, აირბაგების და რადარების პროგრამირება საქართველოში">
   <meta name="keywords" content="Crash Event, დიაგნოსტიკა, AMG Menu, CarPlay, აირბაგები, რადარები, Mercedes პროგრამირება">
   <meta name="author" content="Crash Event">
 </head>
 
-<body>
+  <div id="preloader">
+    <div class="preloader_content">
+      <img src="image-removebg-preview.png" alt="Crash Event Logo">
+      <h2 class="shimmer">Crash Event</h2>
+      <span class="loading_text">Loading...</span>
+    </div>
+  </div>
 
   <!-- ABOUT -->
   <section class="about_section">
 
     <div class="heading_container">
-      <h2>Crash<span>Event</span></h2>
+    <h2 class="shimmer">Crash <span>Event</span></h2>
       <p>საუკეთესო მომსახურება</p>
     </div>
 
@@ -42,6 +51,32 @@
 
     </div>
   </section>
+  <section class="stats_section reveal">
+  <div class="stats_container">
+
+    <div class="stat_box">
+      <h2 class="stat_number" data-target="500">0</h2>
+      <p>კმაყოფილი კლიენტი</p>
+    </div>
+
+    <div class="stat_box">
+      <h2 class="stat_number" data-target="1000">0</h2>
+      <p>წარმატებული პროგრამირება</p>
+    </div>
+
+    <div class="stat_box">
+      <h2 class="stat_number" data-target="5">0</h2>
+      <p>წელი გამოცდილება</p>
+    </div>
+
+    <div class="stat_box">
+      <h2 class="stat_number" data-target="4">0</h2>
+      <p>ქალაქი საქართველოში</p>
+    </div>
+
+  </div>
+</section>
+
 <!-- SERVICES -->
 <section class="services_section">
 
@@ -73,6 +108,115 @@
     </div>
 
   </div>
+  <section class="auto_message_section">
+  <h2>💬 მოგვწერე 1 კლიკით</h2>
+
+  <div class="auto_form">
+    <select id="carModel">
+      <option value="C-Class">C-Class</option>
+      <option value="E-Class">E-Class</option>
+      <option value="S-Class">S-Class</option>
+      <option value="GLC">GLC</option>
+      <option value="GLE">GLE</option>
+      <option value="Other">სხვა</option>
+    </select>
+
+    <select id="serviceType">
+      <option value="CarPlay ჩაწერა">CarPlay ჩაწერა</option>
+      <option value="AMG Menu">AMG Menu</option>
+      <option value="აირბაგების აღდგენა">აირბაგების აღდგენა</option>
+      <option value="რადარების პროგრამირება">რადარების პროგრამირება</option>
+      <option value="დიაგნოსტიკა">დიაგნოსტიკა</option>
+    </select>
+
+    <button onclick="sendAutoMessage()">💬 მოგვწერე Facebook-ზე</button>
+  </div>
+</section>
+
+
+</section>
+<!-- REVIEWS -->
+<section class="reviews_section reveal">
+  <div class="heading_container">
+    <h2>კლიენტების <span>შეფასებები</span></h2>
+    <p>რას ამბობენ ჩვენი მომხმარებლები</p>
+  </div>
+
+  <div class="reviews_slider">
+    <div class="reviews_track">
+
+      <div class="review_card">
+  <div class="stars">
+    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+  </div>
+
+  <p class="review_text">
+    „ძალიან პროფესიონალური მომსახურება, ყველაფერი იდეალურად გაკეთდა.“
+  </p>
+  <h4>გიორგი მ.</h4>
+  <span>Mercedes-Benz C-Class</span>
+</div>
+
+
+      <div class="review_card">
+         <div class="stars">
+    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+  </div>
+        <p class="review_text">
+          „AMG Menu და CarPlay წამებში ჩამიწერეს. კმაყოფილი ვარ.“
+        </p>
+        <h4>ლაშა კ.</h4>
+        <span>Mercedes-Benz E-Class</span>
+      </div>
+
+      <div class="review_card">
+         <div class="stars">
+    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+  </div>
+        <p class="review_text">
+          „აირბაგების პრობლემა სრულად მოაგვარეს. რეკომენდაციას ვუწევ.“
+        </p>
+        <h4>ნიკა ბ.</h4>
+        <span>Mercedes-Benz GLC</span>
+      </div>
+      <div class="review_card">
+         <div class="stars">
+    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+  </div>
+        <p class="review_text">
+          „ფარები ძალიან იდიალურად დამიპროგრამეს.“
+        </p>
+        <h4>ნიკა ა.</h4>
+        <span>Mercedes-Benz GLC</span>
+      </div>
+      <div class="review_card">
+         <div class="stars">
+    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+  </div>
+        <p class="review_text">
+          „აირბაგები ძალიან მალე და ხარისხიანად აღმიდგინეს“
+        </p>
+        <h4>ლუკა შ.</h4>
+        <span>Mercedes-Benz GLC</span>
+      </div>
+      <div class="review_card">
+         <div class="stars">
+    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+  </div>
+        <p class="review_text">
+          „ქრაში წამიშალეს ძალიან მალე.“
+        </p>
+        <h4>ვალერი გ.</h4>
+        <span>Mercedes-Benz CLA</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  </div>
+</section>
+
 </section>
 <!-- CONTACT -->
 <div class="contact_container">
@@ -119,6 +263,32 @@
 </div>
 </head>
 <body>
+
+  <div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+  src="https://connect.facebook.net/ka_GE/sdk.js#xfbml=1&version=v19.0">
+</script>
+
+<section class="hero">
+  <div class="hero_overlay"></div>
+
+  <div class="hero_content">
+    <h1>
+      Mercedes-Benz <span>პროგრამირება</span> და დიაგნოსტიკა
+    </h1>
+    <p>
+      AMG Menu • CarPlay • აირბაგები • რადარები<br>
+      თბილისი | ბათუმი | ფოთი | გურჯაანი
+    </p>
+
+    <div class="hero_buttons">
+      <a href="tel:+995558392580" class="btn primary">📞 დარეკვა ახლა</a>
+      <a href="https://www.facebook.com/profile.php?id=100025626823315" target="_blank" class="btn secondary">
+        💬 მოგვწერე Facebook-ზე
+      </a>
+    </div>
+  </div>
+</section>
 
 <h1 style="text-align:center; margin-top:30px; color:#ff9900;">ჩვენი სერვისები</h1>
 
@@ -169,6 +339,42 @@
   </div>
 </div>
 
+<section class="why_us reveal">
+  <h2>რატომ <span>Crash Event</span>?</h2>
+
+  <div class="why_grid">
+    <div>✅ 5+ წელი გამოცდილება</div>
+    <div>✅ ქარხნული და უსაფრთხო კოდირება</div>
+    <div>✅ გარანტია სერვისზე</div>
+    <div>✅ მუშაობა ყველა Mercedes მოდელზე</div>
+  </div>
+</section>
+<section class="faq_section reveal">
+  <h2>ხშირად დასმული კითხვები</h2>
+
+  <details>
+    <summary>უსაფრთხოა პროგრამირება?</summary>
+    <p>კი, ვიყენებთ ქარხნულ და უსაფრთხო მეთოდებს.</p>
+  </details>
+
+  <details>
+    <summary>გარანტიას ხომ არ აზიანებს?</summary>
+    <p>არა, ყველაფერი კეთდება მწარმოებლის სტანდარტებით.</p>
+  </details>
+
+  <details>
+    <summary>რამდენ ხანში კეთდება?</summary>
+    <p>უმეტესობა სერვისების სრულდება 10–40 წუთში (სერვისის მიხედვით).</p>
+  </details>
+</section>
+
+<div class="floating_buttons">
+  <a href="tel:+995558392580" class="float call">📞</a>
+  <a href="https://www.facebook.com/profile.php?id=100025626823315" target="_blank" class="float fb">💬</a>
+</div>
+
+  </div>
+</section>
 </body>
 </html>
 <!-- MAP -->
@@ -183,11 +389,15 @@
   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3178.233034307714!2d44.81402700000000!3d41.79560210000000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40446d003327674d%3A0xb145f2f76f9bd8a2!2sCrash%20event%20%E2%80%A2%20%E1%83%93%E1%83%98%E1%83%90%E1%83%92%E1%83%9C%E1%83%9D%E1%83%A1%E1%83%A2%E1%83%98%E1%83%99%E1%83%90!5e0!3m2!1sen!2sge!4v1700000000000"
 ></iframe>
 </section>
+
 <footer class="footer">
   <p>©2025 Crash Event ყველა უფლება დაცულია</p>
 </footer>
 
 <script src="script.js"></script>
+<script async defer crossorigin="anonymous"
+  src="https://www.facebook.com/photo?fbid=1782988929231984&set=pcb.1782991129231764">
+</script>
 
 </body>
 </html>
