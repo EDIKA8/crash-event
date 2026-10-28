@@ -1,317 +1,45 @@
-const reveals = document.querySelectorAll(".reveal");
+const T={
+en:{n_srv:"Services",n_book:"Request",n_rev:"Reviews",n_con:"Contact",h1a:"Mercedes-Benz",h1b:"coding",h1c:"and diagnostics",hp:"AMG Menu, CarPlay, airbags and radars. Factory-level coding for every Mercedes model, most jobs done in 10–40 minutes.",call:"Call now",msg:"Message us on Facebook",t_srv:"Our services",s_srv:"Professional, fast service. If the feature you want is not listed, message us and we will find a solution.",st1:"Happy clients",st2:"Successful codings",st3:"Years of experience",st4:"Cities in Georgia",q_t:"Message us in one click",q_n:"Pick your model and service; the Facebook message is ready for you.",q_m:"Model",q_s:"Service",q_b:"Message us on Facebook",d_t:"Call a technician",d_n:"The request includes your location. Your browser will ask for permission.",d_name:"Name",d_phone:"Phone",d_car:"Mercedes model (C, E, S, GLC...)",d_b:"Call out with my location",t_rev:"Client reviews",s_rev:"What our customers say",t_faq:"Frequently asked questions",f1:"Is coding safe?",f1a:"Yes, we use factory-level, safe methods.",f2:"Does it affect the warranty?",f2a:"No, everything is done to the manufacturer's standards.",f3:"How long does it take?",f3a:"Most services take 10–40 minutes, depending on the service.",t_con:"Contact",s_con:"Choose your nearest branch",map:"Tbilisi branch on Google Maps",map_b:"Open map",rights:"All rights reserved"},
+ru:{n_srv:"Услуги",n_book:"Заявка",n_rev:"Отзывы",n_con:"Контакты",h1a:"Mercedes-Benz",h1b:"программирование",h1c:"и диагностика",hp:"AMG Menu, CarPlay, подушки безопасности и радары. Заводское кодирование для всех моделей Mercedes, большинство работ за 10–40 минут.",call:"Позвонить",msg:"Написать в Facebook",t_srv:"Наши услуги",s_srv:"Быстро и профессионально. Если нужной функции нет в списке, напишите нам, мы найдём решение.",st1:"Довольных клиентов",st2:"Успешных программирований",st3:"Лет опыта",st4:"Города Грузии",q_t:"Напишите в один клик",q_n:"Выберите модель и услугу, сообщение для Facebook будет готово.",q_m:"Модель",q_s:"Услуга",q_b:"Написать в Facebook",d_t:"Вызов мастера",d_n:"К заявке добавляется ваша геолокация. Браузер запросит разрешение.",d_name:"Имя",d_phone:"Телефон",d_car:"Модель Mercedes (C, E, S, GLC...)",d_b:"Вызвать с геолокацией",t_rev:"Отзывы клиентов",s_rev:"Что говорят наши клиенты",t_faq:"Частые вопросы",f1:"Программирование безопасно?",f1a:"Да, мы используем заводские и безопасные методы.",f2:"Это влияет на гарантию?",f2a:"Нет, всё выполняется по стандартам производителя.",f3:"Сколько времени занимает?",f3a:"Большинство услуг выполняется за 10–40 минут, в зависимости от услуги.",t_con:"Контакты",s_con:"Выберите ближайший филиал",map:"Филиал в Тбилиси на Google Maps",map_b:"Открыть карту",rights:"Все права защищены"}};
+const KA={};document.querySelectorAll("[data-i18n]").forEach(e=>KA[e.dataset.i18n]=e.innerHTML);
+document.querySelectorAll("[data-ph]").forEach(e=>KA[e.dataset.ph]=e.placeholder);
+function setLang(l){try{localStorage.setItem("siteLang",l)}catch(e){}
+ document.documentElement.lang=l;const D=l==="ka"?KA:Object.assign({},KA,T[l]);
+ document.querySelectorAll("[data-i18n]").forEach(e=>{const k=e.dataset.i18n;if(D[k])e.innerHTML=D[k]});
+ document.querySelectorAll("[data-ph]").forEach(e=>{const k=e.dataset.ph;if(D[k])e.placeholder=D[k]});
+ document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.l===l))}
+document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+let saved="ka";try{saved=localStorage.getItem("siteLang")||"ka"}catch(e){}
+if(saved!=="ka"&&T[saved])setLang(saved);
 
-function revealOnScroll() {
-  const windowHeight = window.innerHeight;
-  const revealPoint = 120;
+/* counters */
+const nums=document.querySelectorAll(".num");
+const io=new IntersectionObserver((es,o)=>es.forEach(e=>{if(!e.isIntersecting)return;o.unobserve(e.target);
+ if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+ const el=e.target,t=+el.dataset.n,s=el.textContent.endsWith("+")?"+":"";let c=0;
+ (function f(){c+=t/60;if(c<t){el.textContent=Math.ceil(c)+s;requestAnimationFrame(f)}else el.textContent=t+s})()}),{threshold:.6});
+nums.forEach(n=>io.observe(n));
 
-  reveals.forEach((el) => {
-    const elementTop = el.getBoundingClientRect().top;
-
-    if (elementTop < windowHeight - revealPoint) {
-      el.classList.add("active");
-    }
-  });
+/* Messenger */
+const PAGE="100025626823315";
+function sendAutoMessage(){
+ const m=document.getElementById("carModel").value,k=document.getElementById("serviceType").value;
+ const q={
+  carplay:`გამარჯობა 👋\nმყავს Mercedes ${m}. მაინტერესებს CarPlay ჩაწერა.\n\n❓ შესაძლებელია ჩემს მოდელზე?\n❓ ქარხნული კოდირებაა თუ დამატებითი მოწყობილობა სჭირდება?\n❓ დაახლოებით რა დრო და ფასი აქვს?`,
+  amg:`გამარჯობა 👋\nMercedes ${m}-ზე მინდა AMG Menu / AMG Design გააქტიურება.\n\n❓ სრული ქარხნული კოდირებაა?\n❓ ყველა რეჟიმი იმუშავებს სწორად?\n❓ რამდენ ხანში კეთდება?`,
+  airbag:`გამარჯობა,\nმყავს Mercedes ${m} და ანთებულია SRS / აირბაგის შეცდომა.\n\n❓ შესაძლებელია სრული აღდგენა?\n❓ შეცდომები საბოლოოდ წაიშლება?\n❓ უსაფრთხო იქნება მანქანის გამოყენება?`,
+  radar:`გამარჯობა 👋\nMercedes ${m}-ზე მაინტერესებს რადარის / დისტრონიკის პროგრამირება.\n\n❓ უსაფრთხოდ კეთდება?\n❓ სხვა სისტემებზე ხომ არ იმოქმედებს?\n❓ გამოცდილება გაქვთ ამ მოდელზე?`,
+  diagnostic:`გამარჯობა,\nმყავს Mercedes ${m} და მინდა სრული კომპიუტერული დიაგნოსტიკა.\n\n❓ რამდენ ხანს გრძელდება პროცესი?\n❓ ყველა ბლოკი მოწმდება?\n❓ დღეს ან ხვალ შესაძლებელი იქნება?`}[k];
+ window.open(`https://m.me/${PAGE}?text=${encodeURIComponent(q)}`,"_blank","noopener");
 }
-
-window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
-
-
-  const track = document.querySelector(".reviews_track");
-  const cards = document.querySelectorAll(".review_card");
-
-  let index = 0;
-
-  function autoScrollReviews() {
-    index++;
-    if (index > cards.length - 1) {
-      index = 0;
-    }
-    track.style.transform = `translateX(-${index * (cards[0].offsetWidth + 30)}px)`;
-  }
-
-  setInterval(autoScrollReviews, 3000); // 3 წამში ერთხელ
-
-  
-const translations = {
-  ka: {
-    hero_title: "Mercedes-Benz პროგრამირება და დიაგნოსტიკა",
-    hero_desc: "AMG Menu • CarPlay • აირბაგები • რადარები<br>თბილისი | ბათუმი | ფოთი | გურჯაანი",
-    call_now: "📞 დარეკვა ახლა",
-    write_fb: "💬 მოგვწერე Facebook-ზე",
-    best_service: "საუკეთესო მომსახურება",
-    about_title: "Crash Event • დიაგნოსტიკა",
-    about_text: "AMG Menu / CarPlay ჩაწერა, დისტრონიკის და რადარის გაუქმება, აირბაგებისა და ღვედების აღდგენა და სხვა მრავალი.",
-    see_more: "მეტის ნახვა",
-    services_title: "ჩვენი <span>მომსახურებები</span>",
-    services_desc: "პროფესიონალური და სწრაფი სერვისი",
-    srv_diag: "დიაგნოსტიკა",
-    srv_diag_desc: "სრული კომპიუტერული დიაგნოსტიკა",
-    srv_airbag: "აირბაგები",
-    srv_airbag_desc: "აირბაგებისა და ღვედების აღდგენა",
-    srv_radar: "რადარები",
-    srv_radar_desc: "რადარის და დისტრონიკის პროგრამირება"
-  },
-
-  en: {
-    hero_title: "Mercedes-Benz Coding & Diagnostics",
-    hero_desc: "AMG Menu • CarPlay • Airbags • Radars<br>Tbilisi | Batumi | Poti | Gurjaani",
-    call_now: "📞 Call Now",
-    write_fb: "💬 Message us on Facebook",
-    best_service: "Premium Service",
-    about_title: "Crash Event • Diagnostics",
-    about_text: "AMG Menu / CarPlay coding, radar & distronic coding, airbag and seatbelt restoration and more.",
-    see_more: "See more",
-    services_title: "Our <span>Services</span>",
-    services_desc: "Professional and fast service",
-    srv_diag: "Diagnostics",
-    srv_diag_desc: "Full computer diagnostics",
-    srv_airbag: "Airbags",
-    srv_airbag_desc: "Airbag & seatbelt restoration",
-    srv_radar: "Radars",
-    srv_radar_desc: "Radar & Distronic coding"
-  },
-
-  ru: {
-    hero_title: "Программирование и диагностика Mercedes-Benz",
-    hero_desc: "AMG Menu • CarPlay • Подушки • Радары<br>Тбилиси | Батуми | Поти | Гурджаани",
-    call_now: "📞 Позвонить",
-    write_fb: "💬 Написать в Facebook",
-    best_service: "Премиальный сервис",
-    about_title: "Crash Event • Диагностика",
-    about_text: "Программирование AMG Menu / CarPlay, радары, восстановление подушек и ремней безопасности.",
-    see_more: "Подробнее",
-    services_title: "Наши <span>услуги</span>",
-    services_desc: "Быстро и профессионально",
-    srv_diag: "Диагностика",
-    srv_diag_desc: "Полная компьютерная диагностика",
-    srv_airbag: "Подушки безопасности",
-    srv_airbag_desc: "Восстановление подушек и ремней",
-    srv_radar: "Радары",
-    srv_radar_desc: "Программирование радаров"
-  }
-};
-
-function setLang(lang) {
-  localStorage.setItem("siteLang", lang);
-
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.getAttribute("data-i18n");
-    if (translations[lang][key]) {
-      el.innerHTML = translations[lang][key];
-    }
-  });
+function sendCallService(){
+ const v=id=>document.getElementById(id).value.trim();
+ const name=v("callName"),phone=v("callPhone"),car=v("callCar"),problem=v("callProblem");
+ if(!name||!phone||!car){alert("შეავსე ყველა ველი / Fill in all fields");return}
+ if(!navigator.geolocation){alert("ლოკაცია არ არის მხარდაჭერილი ამ ბრაუზერში");return}
+ navigator.geolocation.getCurrentPosition(p=>{
+  const map=`https://maps.google.com/?q=${p.coords.latitude},${p.coords.longitude}`;
+  const msg=`🚨 Crash Event გამოძახება\n👤 სახელი: ${name}\n📞 ტელ: ${phone}\n🚗 მანქანა: ${car}\n⚠️ პრობლემა: ${problem}\n\n📍 ლოკაცია:\n${map}`;
+  window.open(`https://m.me/${PAGE}?text=${encodeURIComponent(msg)}`,"_blank","noopener");
+ },()=>alert("ლოკაციის მიღება ვერ მოხერხდა. ჩართე GPS."));
 }
-
-// AUTO LOAD LANGUAGE
-document.addEventListener("DOMContentLoaded", () => {
-  const savedLang = localStorage.getItem("siteLang") || "ka";
-  setLang(savedLang);
-});
-
-window.addEventListener("scroll", () => {
-  document.querySelectorAll(".reveal").forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) {
-      el.classList.add("active");
-    }
-  });
-});
-
-window.addEventListener("load", () => {
-  const preloader = document.getElementById("preloader");
-
-  const SHOW_TIME = 3500; // ⏳ 3.5 წამი ჩანს
-  const HIDE_TIME = 2000;  // ✨ გაქრობის ანიმაცია
-
-  setTimeout(() => {
-    preloader.classList.add("hide");
-
-    setTimeout(() => {
-      preloader.style.display = "none";
-    }, HIDE_TIME);
-  }, SHOW_TIME);
-});
-
-const counters = document.querySelectorAll(".stat_number");
-let statsPlayed = false;
-
-function runCounters() {
-  if (statsPlayed) return;
-
-  counters.forEach(counter => {
-    const target = +counter.getAttribute("data-target");
-    let current = 0;
-    const increment = target / 80;
-
-    const updateCounter = () => {
-      current += increment;
-      if (current < target) {
-        counter.innerText = Math.ceil(current);
-        requestAnimationFrame(updateCounter);
-      } else {
-        counter.innerText = target + "+";
-      }
-    };
-
-    updateCounter();
-  });
-
-  statsPlayed = true;
-}
-
-window.addEventListener("scroll", () => {
-  const statsSection = document.querySelector(".stats_section");
-  if (!statsSection) return;
-
-  const top = statsSection.getBoundingClientRect().top;
-  if (top < window.innerHeight - 150) {
-    runCounters();
-  }
-});
-
-function sendAutoMessage() {
-  const model = document.getElementById("carModel").value;
-  const serviceKey = document.getElementById("serviceType").value;
-
-  const aiMessages = {
-    carplay: (m) => `
-გამარჯობა 👋  
-მყავს Mercedes ${m}. მაინტერესებს CarPlay ჩაწერა.
-
-❓ შესაძლებელია ჩემს მოდელზე?
-❓ ქარხნული კოდირებაა თუ დამატებითი მოწყობილობა სჭირდება?
-❓ დაახლოებით რა დრო და ფასი აქვს?
-`.trim(),
-
-    amg: (m) => `
-გამარჯობა 👋  
-Mercedes ${m}-ზე მინდა AMG Menu / AMG Design გააქტიურება.
-
-❓ სრული ქარხნული კოდირებაა?
-❓ ყველა რეჟიმი იმუშავებს სწორად?
-❓ რამდენ ხანში კეთდება?
-`.trim(),
-
-    airbag: (m) => `
-გამარჯობა,  
-მყავს Mercedes ${m} და ანთებულია SRS / აირბაგის შეცდომა.
-
-❓ შესაძლებელია სრული აღდგენა?
-❓ შეცდომები საბოლოოდ წაიშლება?
-❓ უსაფრთხო იქნება მანქანის გამოყენება?
-`.trim(),
-
-    radar: (m) => `
-გამარჯობა 👋  
-Mercedes ${m}-ზე მაინტერესებს რადარის / დისტრონიკის პროგრამირება.
-
-❓ უსაფრთხოდ კეთდება?
-❓ სხვა სისტემებზე ხომ არ იმოქმედებს?
-❓ გამოცდილება გაქვთ ამ მოდელზე?
-`.trim(),
-
-    diagnostic: (m) => `
-გამარჯობა,  
-მყავს Mercedes ${m} და მინდა სრული კომპიუტერული დიაგნოსტიკა.
-
-❓ რამდენ ხანს გრძელდება პროცესი?
-❓ ყველა ბლოკი მოწმდება?
-❓ დღეს ან ხვალ შესაძლებელი იქნება?
-`.trim()
-  };
-
-  const message =
-    aiMessages[serviceKey]
-      ? aiMessages[serviceKey](model)
-      : `გამარჯობა, მყავს Mercedes ${model}. მაინტერესებს თქვენი სერვისები.`;
-
-  const encoded = encodeURIComponent(message);
-
-  const PAGE_ID = "100025626823315"; // შენი Facebook Page ID
-  const url = `https://m.me/${PAGE_ID}?text=${encoded}`;
-
-  window.open(url, "_blank");
-}
-
-function setLang(lang) {
-  localStorage.setItem("siteLang", lang);
-
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.dataset.i18n;
-
-    if (translations[lang] && translations[lang][key]) {
-      el.innerHTML = translations[lang][key];
-    }
-  });
-}
-
-// AUTO LOAD LANGUAGE (სწორი)
-document.addEventListener("DOMContentLoaded", () => {
-  const savedLang = localStorage.getItem("siteLang") || "ka";
-  setLang(savedLang);
-});
-
-function login() {
-  const name = document.getElementById("clientName").value;
-  const car = document.getElementById("carModel").value;
-  const phone = document.getElementById("phone").value;
-
-  if (!name || !car || !phone) {
-    alert("შეავსე ყველა ველი");
-    return;
-  }
-
-  const clientData = {
-    name,
-    car,
-    phone,
-    services: []
-  };
-
-  localStorage.setItem("clientAccount", JSON.stringify(clientData));
-  window.location.href = "dashboard.html";
-}
-
-function sendCallService() {
-  const name = document.getElementById("callName").value;
-  const phone = document.getElementById("callPhone").value;
-  const car = document.getElementById("callCar").value;
-  const problem = document.getElementById("callProblem").value;
-
-  if (!name || !phone || !car) {
-    alert("შეავსე ყველა ველი!");
-    return;
-  }
-
-  // GPS ლოკაცია
-  if (!navigator.geolocation) {
-    alert("ლოკაცია არ არის მხარდაჭერილი ამ ბრაუზერში");
-    return;
-  }
-
-  navigator.geolocation.getCurrentPosition(position => {
-    const lat = position.coords.latitude;
-    const lon = position.coords.longitude;
-    const mapLink = `https://maps.google.com/?q=${lat},${lon}`;
-
-    const msg = `
-🚨 Crash Event გამოძახება
-👤 სახელი: ${name}
-📞 ტელ: ${phone}
-🚗 მანქანა: ${car}
-⚠️ პრობლემა: ${problem}
-
-📍 ლოკაცია:
-${mapLink}
-`;
-
-    const encoded = encodeURIComponent(msg);
-
-    // შენი Facebook Page ID
-    window.open("https://m.me/100025626823315?text=" + encoded);
-  }, () => {
-    alert("ლოკაციის მიღება ვერ მოხერხდა. ჩართე GPS.");
-  });
-}
-
