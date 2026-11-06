@@ -255,3 +255,86 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&panel.classList.con
 form.onsubmit=e=>{e.preventDefault();const v=inp.value;inp.value="";ask(v)};
 window.botSetLang=labels;labels();
 })();
+
+/* CRASH EVENT LOADING CONTROL */
+
+(function () {
+
+    const loader = document.getElementById("ceLoader");
+
+    if (!loader) return;
+
+    const status = document.getElementById("ceLoaderStatus");
+    const skip = document.getElementById("ceLoaderSkip");
+
+    const started = Date.now();
+
+    let finished = false;
+
+    function closeLoader() {
+
+        if (finished) return;
+
+        finished = true;
+
+        loader.classList.add("is-hidden");
+
+        setTimeout(function () {
+            loader.remove();
+        }, 950);
+
+    }
+
+    // Skip button
+
+    if (skip) {
+        skip.addEventListener("click", closeLoader);
+    }
+
+    // Wait until page loads
+
+    function finishLoading() {
+
+        const elapsed = Date.now() - started;
+
+        const remaining = Math.max(0, 5000 - elapsed);
+
+        setTimeout(closeLoader, remaining);
+
+    }
+
+    if (document.readyState === "complete") {
+
+        finishLoading();
+
+    } else {
+
+        window.addEventListener("load", finishLoading, {
+            once: true
+        });
+
+    }
+
+    // Safety timeout
+
+    setTimeout(closeLoader, 7000);
+
+    // Loading messages
+
+    setTimeout(function () {
+
+        if (!finished && status) {
+            status.textContent = "სერვისების მომზადება";
+        }
+
+    }, 850);
+
+    setTimeout(function () {
+
+        if (!finished && status) {
+            status.textContent = "თითქმის მზადაა";
+        }
+
+    }, 1450);
+
+})();
