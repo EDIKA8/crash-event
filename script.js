@@ -317,7 +317,7 @@ window.botSetLang=labels;labels();
 
     // Safety timeout
 
-    setTimeout(closeLoader, 7000);
+    setTimeout(closeLoader, 3000);
 
     // Loading messages
 
